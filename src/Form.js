@@ -1,9 +1,11 @@
 import { useState } from "react";
+import axios from "axios";
+
 export default function Form({ onAddItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     console.log(e);
 
@@ -16,6 +18,11 @@ export default function Form({ onAddItems }) {
       packed: false,
     };
 
+    // const response = await axios.post(
+    //   "http://localhost:5000/api/newentry",
+    //   newItem
+    // );
+    // console.log(response);
     onAddItems(newItem);
     console.log(newItem);
     setDescription("");
